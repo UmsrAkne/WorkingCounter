@@ -1,10 +1,10 @@
-﻿using WorkingCounter.Views;
-using Prism.Ioc;
-using Prism.Modularity;
-using System.Windows;
-
-namespace WorkingCounter
+﻿namespace WorkingCounter
 {
+    using System.Windows;
+    using Prism.Ioc;
+    using Prism.Modularity;
+    using WorkingCounter.Views;
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -17,7 +17,6 @@ namespace WorkingCounter
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
         }
     }
 }
