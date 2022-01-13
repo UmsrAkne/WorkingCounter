@@ -26,6 +26,9 @@
 
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
 
-        <ListView Grid.Row="1" Background="{StaticResource DarkGray}" />
+        <ListView
+            Grid.Row="1"
+            Background="{StaticResource DarkGray}"
+            ItemsSource="{Binding Works}" />
     </Grid>
 </Window>
