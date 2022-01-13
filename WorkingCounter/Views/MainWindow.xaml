@@ -1,10 +1,31 @@
-﻿<Window x:Class="WorkingCounter.Views.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:prism="http://prismlibrary.com/"
-        prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="525">
+﻿<Window
+    x:Class="WorkingCounter.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    Title="{Binding Title}"
+    Width="525"
+    Height="350"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="DarkGray" Color="#222" />
+    </Window.Resources>
+
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="{StaticResource DarkGray}" />
+        </Style>
+    </Window.Style>
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+
+        <ListView Grid.Row="1" Background="{StaticResource DarkGray}" />
     </Grid>
 </Window>
