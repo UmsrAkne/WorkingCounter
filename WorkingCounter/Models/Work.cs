@@ -6,6 +6,8 @@
     {
         public DateTime AdditionDate { get; set; }
 
+        public string Name { get; set; }
+
         /// <summary>
         /// ノルマを表す 
         /// </summary>
