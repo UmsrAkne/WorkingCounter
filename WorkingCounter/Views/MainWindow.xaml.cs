@@ -1,7 +1,7 @@
-﻿using System.Windows;
-
-namespace WorkingCounter.Views
+﻿namespace WorkingCounter.Views
 {
+    using System.Windows;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
