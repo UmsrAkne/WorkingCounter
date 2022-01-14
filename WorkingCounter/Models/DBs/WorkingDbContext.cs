@@ -20,5 +20,11 @@
             var connectionString = new SqliteConnectionStringBuilder { DataSource = @"workingdb.sqlite" }.ToString();
             optionsBuilder.UseSqlite(new SQLiteConnection(connectionString));
         }
+
+        public void Insert(Work work)
+        {
+            Works.Add(work);
+            SaveChanges();
+        }
     }
 }
