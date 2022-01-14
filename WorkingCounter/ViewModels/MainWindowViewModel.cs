@@ -3,16 +3,20 @@
     using System.Collections.Generic;
     using Prism.Mvvm;
     using WorkingCounter.Models;
+    using WorkingCounter.Models.DBs;
 
     public class MainWindowViewModel : BindableBase
     {
         private string title = "Prism Application";
 
         private List<Work> works;
+        private WorkingDbContext workingDbContext;
 
         public MainWindowViewModel()
         {
             Works = new List<Work>();
+            workingDbContext = new WorkingDbContext();
+            workingDbContext.CreateDatabase();
         }
 
         public string Title
