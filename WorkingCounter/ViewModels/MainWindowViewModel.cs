@@ -1,6 +1,7 @@
 ﻿namespace WorkingCounter.ViewModels
 {
     using System.Collections.Generic;
+    using Prism.Commands;
     using Prism.Mvvm;
     using WorkingCounter.Models;
     using WorkingCounter.Models.DBs;
@@ -11,6 +12,7 @@
 
         private List<Work> works;
         private WorkingDbContext workingDbContext;
+        private string inputText;
 
         public MainWindowViewModel()
         {
@@ -19,6 +21,15 @@
             workingDbContext.CreateDatabase();
         }
 
+        public DelegateCommand AddWorkCommand => new DelegateCommand(() =>
+        {
+            var work = new Work();
+            work.Name = InputText;
+            work.AdditionDate = System.DateTime.Now;
+            work.Unit = "1p";
+            workingDbContext.Insert(work);
+        });
+
         public string Title
         {
             get { return title; }
@@ -26,5 +37,7 @@
         }
 
         public List<Work> Works { get => works; set => SetProperty(ref works, value); }
+
+        public string InputText { get => inputText; set => SetProperty(ref inputText, value); }
     }
 }
