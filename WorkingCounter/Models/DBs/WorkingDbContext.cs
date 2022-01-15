@@ -7,24 +7,35 @@
 
     public class WorkingDbContext : DbContext
     {
+        private string databaseFileName = "workingdb.sqlite";
+
         public DbSet<Work> Works { get; set; }
+
         public DbSet<WorkingUnit> WorkingUnits { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public void CreateDatabase()
         {
-            if (!File.Exists("workingdb"))
+            if (!File.Exists(databaseFileName))
             {
-                SQLiteConnection.CreateFile("workingdb.sqlite"); // ファイルが存在している場合は問答無用で上書き。
+                Database.EnsureCreated();
             }
-
-            var connectionString = new SqliteConnectionStringBuilder { DataSource = @"workingdb.sqlite" }.ToString();
-            optionsBuilder.UseSqlite(new SQLiteConnection(connectionString));
         }
 
         public void Insert(Work work)
         {
             Works.Add(work);
             SaveChanges();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!File.Exists(databaseFileName))
+            {
+                SQLiteConnection.CreateFile(databaseFileName); // ファイルが存在している場合は問答無用で上書き。
+            }
+
+            var connectionString = new SqliteConnectionStringBuilder { DataSource = databaseFileName }.ToString();
+            optionsBuilder.UseSqlite(new SQLiteConnection(connectionString));
         }
     }
 }

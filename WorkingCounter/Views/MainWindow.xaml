@@ -18,6 +18,13 @@
         </Style>
     </Window.Style>
 
+    <Window.InputBindings>
+        <KeyBinding
+            Key="Return"
+            Command="{Binding AddWorkCommand}"
+            Modifiers="Ctrl" />
+    </Window.InputBindings>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -25,6 +32,13 @@
         </Grid.RowDefinitions>
 
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+
+        <TextBox
+            Grid.Row="0"
+            Background="{StaticResource DarkGray}"
+            FontSize="12"
+            Foreground="White"
+            Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged}" />
 
         <ListView
             Grid.Row="1"
