@@ -1,6 +1,6 @@
 ﻿namespace WorkingCounter.ViewModels
 {
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using Prism.Commands;
     using Prism.Mvvm;
     using WorkingCounter.Models;
@@ -10,13 +10,13 @@
     {
         private string title = "Prism Application";
 
-        private List<Work> works;
+        private ObservableCollection<Work> works;
         private WorkingDbContext workingDbContext;
         private string inputText;
 
         public MainWindowViewModel()
         {
-            Works = new List<Work>();
+            Works = new ObservableCollection<Work>();
             workingDbContext = new WorkingDbContext();
             workingDbContext.CreateDatabase();
         }
@@ -36,7 +36,7 @@
             set { SetProperty(ref title, value); }
         }
 
-        public List<Work> Works { get => works; set => SetProperty(ref works, value); }
+        public ObservableCollection<Work> Works { get => works; set => SetProperty(ref works, value); }
 
         public string InputText { get => inputText; set => SetProperty(ref inputText, value); }
     }
