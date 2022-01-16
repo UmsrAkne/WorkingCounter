@@ -19,6 +19,7 @@
             Works = new ObservableCollection<Work>();
             workingDbContext = new WorkingDbContext();
             workingDbContext.CreateDatabase();
+            ReloadWorks();
         }
 
         public DelegateCommand AddWorkCommand => new DelegateCommand(() =>
@@ -39,5 +40,10 @@
         public ObservableCollection<Work> Works { get => works; set => SetProperty(ref works, value); }
 
         public string InputText { get => inputText; set => SetProperty(ref inputText, value); }
+
+        private void ReloadWorks()
+        {
+            Works = new ObservableCollection<Work>(workingDbContext.GetWorks());
+        }
     }
 }
