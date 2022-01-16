@@ -29,6 +29,9 @@
             work.AdditionDate = System.DateTime.Now;
             work.Unit = "1p";
             workingDbContext.Insert(work);
+
+            InputText = string.Empty;
+            ReloadWorks();
         });
 
         public string Title
