@@ -36,7 +36,8 @@
         <TextBox
             Grid.Row="0"
             Background="{StaticResource DarkGray}"
-            FontSize="12"
+            FontFamily="BIZ UDゴシック"
+            FontSize="14"
             Foreground="White"
             Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged}" />
 
@@ -54,6 +55,8 @@
 
                             <Style TargetType="TextBlock">
                                 <Setter Property="Foreground" Value="WhiteSmoke" />
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="FontFamily" Value="BIZ UDゴシック" />
                             </Style>
 
                         </Grid.Resources>
