@@ -1,7 +1,9 @@
 ﻿namespace WorkingCounter.Models.DBs
 {
+    using System.Collections.Generic;
     using System.Data.SQLite;
     using System.IO;
+    using System.Linq;
     using Microsoft.Data.Sqlite;
     using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +27,11 @@
         {
             Works.Add(work);
             SaveChanges();
+        }
+
+        public List<Work> GetWorks()
+        {
+            return Works.Select(w => w).ToList();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
