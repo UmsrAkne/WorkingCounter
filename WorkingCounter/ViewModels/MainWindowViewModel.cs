@@ -27,6 +27,8 @@
             var work = new Work();
             work.Name = InputText;
             work.AdditionDate = System.DateTime.Now;
+            work.StartDate = System.DateTime.Today;
+            work.LimitDate = System.DateTime.Today.AddDays(1);
             work.Unit = "1p";
             workingDbContext.Insert(work);
 

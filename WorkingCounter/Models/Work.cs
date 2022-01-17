@@ -13,6 +13,12 @@
         public DateTime AdditionDate { get; set; }
 
         [Required]
+        public DateTime StartDate { get; set; }
+
+        [Required]
+        public DateTime LimitDate { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         /// <summary>
