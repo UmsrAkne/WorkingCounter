@@ -13,6 +13,9 @@
         public DateTime AdditionDate { get; set; }
 
         [Required]
+        public int ParentWorkId { get; set; }
+
+        [Required]
         public string Memo { get; set; }
 
         [Required]
