@@ -1,6 +1,7 @@
 ﻿namespace WorkingCounter.ViewModels
 {
     using System.Collections.ObjectModel;
+    using System.Windows.Controls;
     using Prism.Commands;
     using Prism.Mvvm;
     using WorkingCounter.Models;
@@ -34,6 +35,19 @@
 
             InputText = string.Empty;
             ReloadWorks();
+        });
+
+        public DelegateCommand<ListViewItem> AddWorkingUnitCommand => new DelegateCommand<ListViewItem>((ListViewItem l) =>
+        {
+            Work currentWork = l.Content as Work;
+
+            if (currentWork != null)
+            {
+                var unit = new WorkingUnit();
+                unit.ParentWorkId = currentWork.Id;
+                workingDbContext.Insert(unit);
+                ReloadWorks();
+            }
         });
 
         public string Title

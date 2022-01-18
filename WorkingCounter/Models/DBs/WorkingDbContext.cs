@@ -29,6 +29,12 @@
             SaveChanges();
         }
 
+        public void Insert(WorkingUnit workingUnit)
+        {
+            WorkingUnits.Add(workingUnit);
+            SaveChanges();
+        }
+
         public List<Work> GetWorks()
         {
             return Works.Select(w => w).ToList();

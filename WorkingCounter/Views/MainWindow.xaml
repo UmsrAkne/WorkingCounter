@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:prism="http://prismlibrary.com/"
+    Name="Window"
     Title="{Binding Title}"
     Width="800"
     Height="350"
@@ -63,8 +64,8 @@
                         </Grid.Resources>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="50" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
@@ -73,6 +74,21 @@
                         </Border>
 
                         <Border Grid.Column="1">
+                            <Button
+                                Width="30"
+                                Command="{Binding DataContext.AddWorkingUnitCommand, ElementName=Window}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}}">
+                                <Button.Content>
+                                    <TextBlock
+                                        FontSize="12"
+                                        Foreground="Black"
+                                        Text="+" />
+                                </Button.Content>
+                            </Button>
+
+                        </Border>
+
+                        <Border Grid.Column="2">
                             <TextBlock Text="{Binding AdditionDate}" />
                         </Border>
                     </Grid>

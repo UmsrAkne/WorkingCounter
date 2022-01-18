@@ -16,7 +16,7 @@
         public int ParentWorkId { get; set; }
 
         [Required]
-        public string Memo { get; set; }
+        public string Memo { get; set; } = string.Empty;
 
         [Required]
         public TimeSpan WorkingDuration { get; set; }
