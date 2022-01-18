@@ -63,8 +63,8 @@
                         </Grid.Resources>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="50" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
@@ -73,6 +73,18 @@
                         </Border>
 
                         <Border Grid.Column="1">
+                            <Button Width="30">
+                                <Button.Content>
+                                    <TextBlock
+                                        FontSize="12"
+                                        Foreground="Black"
+                                        Text="+" />
+                                </Button.Content>
+                            </Button>
+
+                        </Border>
+
+                        <Border Grid.Column="2">
                             <TextBlock Text="{Binding AdditionDate}" />
                         </Border>
                     </Grid>
