@@ -40,6 +40,11 @@
             return Works.Select(w => w).ToList();
         }
 
+        public List<WorkingUnit> GetWorkingUnits(int parentWorkId)
+        {
+            return WorkingUnits.Where(wu => wu.ParentWorkId == parentWorkId).ToList();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!File.Exists(databaseFileName))
