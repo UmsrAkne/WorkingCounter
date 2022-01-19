@@ -1,7 +1,9 @@
 ﻿namespace WorkingCounter.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Work
     {
@@ -29,5 +31,8 @@
 
         [Required]
         public string Unit { get; set; }
+
+        [NotMapped]
+        public List<WorkingUnit> Units { get; set; }
     }
 }
