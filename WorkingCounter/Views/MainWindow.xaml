@@ -66,6 +66,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250" />
                             <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="180" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
@@ -91,6 +92,39 @@
                         <Border Grid.Column="2">
                             <TextBlock Text="{Binding AdditionDate}" />
                         </Border>
+
+                        <Border Grid.Column="3">
+                            <ListBox
+                                Background="Transparent"
+                                BorderThickness="0"
+                                ItemsSource="{Binding Units}">
+
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Padding" Value="1,0" />
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            Width="12"
+                                            Height="12"
+                                            Background="Azure"
+                                            CornerRadius="1" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+
+                            </ListBox>
+
+                        </Border>
+
                     </Grid>
 
                 </DataTemplate>

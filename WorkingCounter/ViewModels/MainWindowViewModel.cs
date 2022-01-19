@@ -62,7 +62,13 @@
 
         private void ReloadWorks()
         {
-            Works = new ObservableCollection<Work>(workingDbContext.GetWorks());
+            var workList = workingDbContext.GetWorks();
+            workList.ForEach(w =>
+            {
+                w.Units = workingDbContext.GetWorkingUnits(w.Id);
+            });
+
+            Works = new ObservableCollection<Work>(workList);
         }
     }
 }
