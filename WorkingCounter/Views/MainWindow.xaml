@@ -117,7 +117,16 @@
                                             Width="12"
                                             Height="12"
                                             Background="Azure"
-                                            CornerRadius="1" />
+                                            CornerRadius="1">
+
+                                            <Border.ToolTip>
+                                                <StackPanel>
+                                                    <TextBlock Foreground="Black" Text="{Binding AdditionDate}" />
+                                                    <TextBlock Foreground="Black" Text="{Binding Memo}" />
+                                                </StackPanel>
+                                            </Border.ToolTip>
+
+                                        </Border>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
 
