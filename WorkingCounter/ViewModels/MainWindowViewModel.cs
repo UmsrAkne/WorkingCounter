@@ -45,6 +45,7 @@
             {
                 var unit = new WorkingUnit();
                 unit.ParentWorkId = currentWork.Id;
+                unit.AdditionDate = System.DateTime.Now;
                 workingDbContext.Insert(unit);
                 ReloadWorks();
             }
