@@ -95,6 +95,7 @@
 
                         <Border Grid.Column="3">
                             <ListBox
+                                AlternationCount="5"
                                 Background="Transparent"
                                 BorderThickness="0"
                                 ItemsSource="{Binding Units}">
@@ -108,6 +109,11 @@
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem">
                                         <Setter Property="Padding" Value="1,0" />
+                                        <Style.Triggers>
+                                            <Trigger Property="ItemsControl.AlternationIndex" Value="4">
+                                                <Setter Property="Margin" Value="0,0,4,0" />
+                                            </Trigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </ListBox.ItemContainerStyle>
 
