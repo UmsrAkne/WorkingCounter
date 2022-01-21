@@ -136,7 +136,11 @@
                         </Border>
 
                         <Border Grid.Column="3">
-                            <TextBlock />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Units.Count}" />
+                                <TextBlock Text=" / " />
+                                <TextBlock Text="{Binding Quota}" />
+                            </StackPanel>
                         </Border>
 
                     </Grid>
