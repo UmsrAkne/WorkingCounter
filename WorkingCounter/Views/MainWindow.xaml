@@ -66,7 +66,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250" />
                             <ColumnDefinition Width="50" />
-                            <ColumnDefinition Width="350" />
+                            <ColumnDefinition Width="340" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
@@ -93,7 +93,8 @@
                                 AlternationCount="5"
                                 Background="Transparent"
                                 BorderThickness="0"
-                                ItemsSource="{Binding Units}">
+                                ItemsSource="{Binding Units}"
+                                ScrollViewer.HorizontalScrollBarVisibility="Hidden">
 
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -135,7 +136,7 @@
 
                         </Border>
 
-                        <Border Grid.Column="3">
+                        <Border Grid.Column="3" Padding="4,0">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Units.Count}" />
                                 <TextBlock Text=" / " />
