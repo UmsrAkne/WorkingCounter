@@ -37,12 +37,12 @@
 
         public List<Work> GetWorks()
         {
-            return Works.Select(w => w).ToList();
+            return Works.Select(w => w).OrderByDescending(w => w.AdditionDate).ToList();
         }
 
         public List<WorkingUnit> GetWorkingUnits(int parentWorkId)
         {
-            return WorkingUnits.Where(wu => wu.ParentWorkId == parentWorkId).ToList();
+            return WorkingUnits.Where(wu => wu.ParentWorkId == parentWorkId).OrderByDescending(wu => wu.AdditionDate).ToList();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
