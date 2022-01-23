@@ -1,16 +1,19 @@
 ﻿namespace WorkingCounter.ViewModels
 {
     using System;
+    using Prism.Mvvm;
     using Prism.Services.Dialogs;
     using WorkingCounter.Models;
 
-    public class DetailWindowViewModel : IDialogAware
+    public class DetailWindowViewModel : BindableBase, IDialogAware
     {
+        private Work work;
+
         public event Action<IDialogResult> RequestClose;
 
         public string Title => "Detail window";
 
-        public Work Work { get; set; }
+        public Work Work { get => work; set => SetProperty(ref work, value); }
 
         public bool CanCloseDialog()
         {
