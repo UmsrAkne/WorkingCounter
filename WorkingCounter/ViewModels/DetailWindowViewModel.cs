@@ -15,14 +15,10 @@
 
         public Work Work { get => work; set => SetProperty(ref work, value); }
 
-        public bool CanCloseDialog()
-        {
-            throw new NotImplementedException();
-        }
+        public bool CanCloseDialog() => true;
 
         public void OnDialogClosed()
         {
-            throw new NotImplementedException();
         }
 
         public void OnDialogOpened(IDialogParameters parameters)
