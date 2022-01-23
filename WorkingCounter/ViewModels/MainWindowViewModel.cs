@@ -55,10 +55,14 @@
             }
         });
 
-        public DelegateCommand ShowDetailWindowCommand => new DelegateCommand(() =>
+        public DelegateCommand<Work> ShowDetailWindowCommand => new DelegateCommand<Work>((Work w) =>
         {
-            var param = new DialogParameters();
-            dialogService.ShowDialog(nameof(DetailWindow), param, (IDialogResult result) => { });
+            if (w != null)
+            {
+                var param = new DialogParameters();
+                param.Add(nameof(Work), w);
+                dialogService.ShowDialog(nameof(DetailWindow), param, (IDialogResult result) => { });
+            }
         });
 
         public string Title
