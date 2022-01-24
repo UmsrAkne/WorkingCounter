@@ -10,67 +10,91 @@
     Height="250"
     mc:Ignorable="d">
     <Grid>
-        <StackPanel>
-            <StackPanel.Resources>
-                <Style TargetType="Grid">
-                    <Setter Property="Margin" Value="3" />
-                </Style>
-            </StackPanel.Resources>
+        <Grid.Resources>
+            <Style TargetType="Grid">
+                <Setter Property="Margin" Value="3" />
+            </Style>
+        </Grid.Resources>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Title : " />
-                <TextBox Grid.Column="1" Text="{Binding Work.Name}" />
-            </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="追加日時 : " />
-                <TextBox Grid.Column="1" Text="{Binding Work.AdditionDate}" />
-                <TextBlock Grid.Column="2" Text="実施日時 : " />
-                <TextBox Grid.Column="3" Text="{Binding Work.StartDate}" />
-            </Grid>
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="5,0"
+            Text="Title : " />
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
+        <TextBox
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            Text="{Binding Work.Name}" />
 
-                <TextBlock Grid.Column="0" Text="現在の作業量 / ノルマ " />
-                <TextBlock Grid.Column="1" Text="{Binding Work.Units.Count}" />
-                <TextBlock Grid.Column="2" Text="  /  " />
-                <TextBlock Grid.Column="3" Text="{Binding Work.Quota}" />
-            </Grid>
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="5,0"
+            Text="追加日時 : " />
 
-            <ListView x:Name="workingCountList" ItemsSource="{Binding WorkingUnits}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="{Binding Work.AdditionDate}" />
 
-                            <TextBlock Grid.Column="0" Text="{Binding AdditionDate}" />
-                            <TextBlock Grid.Column="1" Text="{Binding Memo}" />
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="2"
+            Margin="5,0"
+            Text="実施日時 : " />
+
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="3"
+            Text="{Binding Work.StartDate}" />
+
+        <StackPanel
+            Grid.Row="2"
+            Grid.ColumnSpan="4"
+            Margin="5,0"
+            Orientation="Horizontal">
+
+            <TextBlock Text="現在の作業量 / ノルマ " />
+            <TextBlock Text="{Binding Work.Units.Count}" />
+            <TextBlock Text="  /  " />
+            <TextBlock Text="{Binding Work.Quota}" />
 
         </StackPanel>
 
+        <ListView
+            x:Name="workingCountList"
+            Grid.Row="3"
+            Grid.ColumnSpan="4"
+            ItemsSource="{Binding WorkingUnits}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding AdditionDate}" />
+                        <TextBlock Grid.Column="1" Text="{Binding Memo}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
