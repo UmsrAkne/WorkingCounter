@@ -54,7 +54,21 @@
                 <TextBlock Grid.Column="3" Text="{Binding Work.Quota}" />
             </Grid>
 
-            <ListView x:Name="workingCountList" ItemsSource="{Binding WorkingUnits}" />
+            <ListView x:Name="workingCountList" ItemsSource="{Binding WorkingUnits}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{Binding AdditionDate}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Memo}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
         </StackPanel>
 
