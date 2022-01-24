@@ -54,7 +54,7 @@
                 <TextBlock Grid.Column="3" Text="{Binding Work.Quota}" />
             </Grid>
 
-            <ListView x:Name="workingCountList" />
+            <ListView x:Name="workingCountList" ItemsSource="{Binding WorkingUnits}" />
 
         </StackPanel>
 
