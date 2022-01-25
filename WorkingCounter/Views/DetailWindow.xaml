@@ -8,8 +8,24 @@
     Title="DetailWindow"
     Width="600"
     Height="250"
+    Background="#222"
     mc:Ignorable="d">
-    <Grid>
+
+    <Page.Resources>
+        <SolidColorBrush x:Key="DarkGray" Color="#222" />
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="WhiteSmoke" />
+            <Setter Property="Background" Value="{StaticResource DarkGray}" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="WhiteSmoke" />
+            <Setter Property="Background" Value="{StaticResource DarkGray}" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource DarkGray}">
         <Grid.Resources>
             <Style TargetType="Grid">
                 <Setter Property="Margin" Value="3" />
@@ -81,6 +97,7 @@
             x:Name="workingCountList"
             Grid.Row="3"
             Grid.ColumnSpan="4"
+            Background="{StaticResource DarkGray}"
             ItemsSource="{Binding WorkingUnits}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -90,8 +107,14 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" Text="{Binding AdditionDate}" />
-                        <TextBlock Grid.Column="1" Text="{Binding Memo}" />
+                        <TextBlock
+                            Grid.Column="0"
+                            Foreground="WhiteSmoke"
+                            Text="{Binding AdditionDate}" />
+                        <TextBlock
+                            Grid.Column="1"
+                            Foreground="WhiteSmoke"
+                            Text="{Binding Memo}" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
