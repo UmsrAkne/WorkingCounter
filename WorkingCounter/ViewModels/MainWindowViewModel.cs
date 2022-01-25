@@ -4,6 +4,7 @@
     using System.Windows.Controls;
     using Prism.Commands;
     using Prism.Mvvm;
+    using Prism.Services.Dialogs;
     using WorkingCounter.Models;
     using WorkingCounter.Models.DBs;
 
@@ -14,13 +15,16 @@
         private ObservableCollection<Work> works;
         private WorkingDbContext workingDbContext;
         private string inputText;
+        private IDialogService dialogService;
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IDialogService dialogService)
         {
             Works = new ObservableCollection<Work>();
             workingDbContext = new WorkingDbContext();
             workingDbContext.CreateDatabase();
             ReloadWorks();
+
+            this.dialogService = dialogService;
         }
 
         public DelegateCommand AddWorkCommand => new DelegateCommand(() =>
@@ -47,6 +51,18 @@
                 unit.ParentWorkId = currentWork.Id;
                 unit.AdditionDate = System.DateTime.Now;
                 workingDbContext.Insert(unit);
+                ReloadWorks();
+            }
+        });
+
+        public DelegateCommand<Work> ShowDetailWindowCommand => new DelegateCommand<Work>((Work w) =>
+        {
+            if (w != null)
+            {
+                var param = new DialogParameters();
+                param.Add(nameof(Work), w);
+                param.Add(nameof(WorkingDbContext), workingDbContext);
+                dialogService.ShowDialog(nameof(DetailWindow), param, (IDialogResult result) => { });
                 ReloadWorks();
             }
         });

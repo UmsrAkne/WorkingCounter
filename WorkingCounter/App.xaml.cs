@@ -3,6 +3,7 @@
     using System.Windows;
     using Prism.Ioc;
     using Prism.Modularity;
+    using WorkingCounter.ViewModels;
     using WorkingCounter.Views;
 
     /// <summary>
@@ -17,6 +18,7 @@
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterDialog<DetailWindow, DetailWindowViewModel>();
         }
     }
 }
