@@ -56,7 +56,7 @@
             Grid.Row="0"
             Grid.Column="1"
             Grid.ColumnSpan="3"
-            Text="{Binding Work.Name}" />
+            Text="{Binding Name, UpdateSourceTrigger=LostFocus}" />
 
         <TextBlock
             Grid.Row="1"

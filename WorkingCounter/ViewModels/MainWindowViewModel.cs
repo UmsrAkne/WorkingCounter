@@ -61,7 +61,9 @@
             {
                 var param = new DialogParameters();
                 param.Add(nameof(Work), w);
+                param.Add(nameof(WorkingDbContext), workingDbContext);
                 dialogService.ShowDialog(nameof(DetailWindow), param, (IDialogResult result) => { });
+                ReloadWorks();
             }
         });
 
