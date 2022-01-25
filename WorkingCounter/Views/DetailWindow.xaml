@@ -17,11 +17,16 @@
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="WhiteSmoke" />
             <Setter Property="Background" Value="{StaticResource DarkGray}" />
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
 
         <Style TargetType="TextBox">
             <Setter Property="Foreground" Value="WhiteSmoke" />
             <Setter Property="Background" Value="{StaticResource DarkGray}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="2" />
         </Style>
     </Page.Resources>
 
