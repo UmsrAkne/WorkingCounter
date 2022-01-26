@@ -91,10 +91,13 @@
             Margin="5,0"
             Orientation="Horizontal">
 
-            <TextBlock Text="現在の作業量 / ノルマ " />
+            <TextBlock Text="現在の作業量 : " />
             <TextBlock Text="{Binding Work.Units.Count}" />
-            <TextBlock Text="  /  " />
-            <TextBlock Text="{Binding Work.Quota}" />
+            <TextBlock Margin="10,0" Text="ノルマ : " />
+            <TextBox
+                Width="50"
+                HorizontalContentAlignment="Center"
+                Text="{Binding Quota}" />
 
         </StackPanel>
 
