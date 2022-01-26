@@ -34,5 +34,8 @@
 
         [NotMapped]
         public List<WorkingUnit> Units { get; set; }
+
+        [NotMapped]
+        public bool IsComplete => Units.Count >= Quota;
     }
 }
