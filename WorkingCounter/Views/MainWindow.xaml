@@ -148,8 +148,21 @@
                                         <Border
                                             Width="12"
                                             Height="12"
-                                            Background="Azure"
                                             CornerRadius="1">
+
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Path=Content.IsComplete}" Value="True">
+                                                            <Setter Property="Background" Value="Gray" />
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Path=Content.IsComplete}" Value="False">
+                                                            <Setter Property="Background" Value="WhiteSmoke" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
 
                                             <Border.ToolTip>
                                                 <StackPanel>
