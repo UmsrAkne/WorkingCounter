@@ -13,6 +13,7 @@
         private Work work;
         private ObservableCollection<WorkingUnit> workingUnits;
         private string name;
+        private int quota;
         private WorkingDbContext workingDbContext;
 
         public event Action<IDialogResult> RequestClose;
@@ -26,6 +27,17 @@
             {
                 SetProperty(ref name, value);
                 var targetWork = workingDbContext.Works.Where(w => work.Id == w.Id).First().Name = Name;
+                workingDbContext.SaveChanges();
+            }
+        }
+
+        public int Quota
+        {
+            get => quota;
+            set
+            {
+                SetProperty(ref quota, value);
+                var targetWork = workingDbContext.Works.Where(w => work.Id == w.Id).First().Quota = Quota;
                 workingDbContext.SaveChanges();
             }
         }

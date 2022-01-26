@@ -97,7 +97,7 @@
             <TextBox
                 Width="50"
                 HorizontalContentAlignment="Center"
-                Text="{Binding Work.Quota}" />
+                Text="{Binding Quota}" />
 
         </StackPanel>
 
