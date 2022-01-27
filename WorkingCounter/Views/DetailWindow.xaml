@@ -41,6 +41,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -85,8 +86,19 @@
             Grid.Column="3"
             Text="{Binding Work.StartDate}" />
 
-        <StackPanel
+        <TextBlock
             Grid.Row="2"
+            Grid.Column="0"
+            Margin="5,0"
+            Text="締め切り : " />
+
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="{Binding Work.LimitDate}" />
+
+        <StackPanel
+            Grid.Row="3"
             Grid.ColumnSpan="4"
             Margin="5,0"
             Orientation="Horizontal">
@@ -103,7 +115,7 @@
 
         <ListView
             x:Name="workingCountList"
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.ColumnSpan="4"
             Background="{StaticResource DarkGray}"
             ItemsSource="{Binding WorkingUnits}">
