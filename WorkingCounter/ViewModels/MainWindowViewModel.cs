@@ -7,6 +7,7 @@
     using Prism.Services.Dialogs;
     using WorkingCounter.Models;
     using WorkingCounter.Models.DBs;
+    using WorkingCounter.Views;
 
     public class MainWindowViewModel : BindableBase
     {
@@ -65,6 +66,14 @@
                 dialogService.ShowDialog(nameof(DetailWindow), param, (IDialogResult result) => { });
                 ReloadWorks();
             }
+        });
+
+        public DelegateCommand ShowAdditionWindowCommand => new DelegateCommand(() =>
+        {
+            var param = new DialogParameters();
+            param.Add(nameof(WorkingDbContext), workingDbContext);
+            dialogService.ShowDialog(nameof(WorkAdditionWindow), param, (IDialogResult result) => { });
+            ReloadWorks();
         });
 
         public string Title

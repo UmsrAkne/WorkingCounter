@@ -25,6 +25,11 @@
             Key="Return"
             Command="{Binding AddWorkCommand}"
             Modifiers="Ctrl" />
+
+        <KeyBinding
+            Key="N"
+            Command="{Binding ShowAdditionWindowCommand}"
+            Modifiers="Ctrl" />
     </Window.InputBindings>
 
     <Grid>
