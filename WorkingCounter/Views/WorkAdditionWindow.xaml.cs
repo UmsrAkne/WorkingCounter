@@ -17,7 +17,7 @@
     /// <summary>
     /// WorkAdditionWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class WorkAdditionWindow : Window
+    public partial class WorkAdditionWindow : Page
     {
         public WorkAdditionWindow()
         {
