@@ -19,6 +19,7 @@
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialog<DetailWindow, DetailWindowViewModel>();
+            containerRegistry.RegisterDialog<WorkAdditionWindow, WorkAdditionWindowViewModel>();
         }
     }
 }
