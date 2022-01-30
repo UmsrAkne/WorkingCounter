@@ -70,8 +70,13 @@
             <Button
                 Width="100"
                 Margin="5,0"
+                Command="{Binding CloseCommand}"
                 Content="追加する" />
-            <Button Width="100" Content="破棄する" />
+
+            <Button
+                Width="100"
+                Command="{Binding CloseAndDisposeCommand}"
+                Content="破棄する" />
         </StackPanel>
 
 

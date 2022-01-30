@@ -1,6 +1,7 @@
 ﻿namespace WorkingCounter.ViewModels
 {
     using System;
+    using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Services.Dialogs;
     using WorkingCounter.Models;
@@ -54,6 +55,18 @@
                 work.Quota = value;
             }
         }
+
+        public DelegateCommand CloseCommand => new DelegateCommand(() =>
+        {
+            var result = new DialogResult();
+            result.Parameters.Add(nameof(Work), work);
+            RequestClose.Invoke(result);
+        });
+
+        public DelegateCommand CloseAndDisposeCommand => new DelegateCommand(() =>
+        {
+            RequestClose.Invoke(new DialogResult());
+        });
 
         public bool CanCloseDialog()
         {
