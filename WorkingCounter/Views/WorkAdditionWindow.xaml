@@ -42,7 +42,8 @@
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Height="auto"
-            Margin="2,0" />
+            Margin="2,0"
+            Text="{Binding Name}" />
 
         <StackPanel Grid.Row="1" Margin="2">
             <TextBlock HorizontalAlignment="Center" Text="開始日" />
@@ -54,9 +55,10 @@
             Grid.Row="1"
             Grid.Column="1"
             Margin="2">
-            <ComboBox />
-            <ComboBox />
-            <ComboBox />
+
+            <TextBox Text="{Binding DateCountToStart}" />
+            <TextBox Text="{Binding DateCountToLimit}" />
+            <TextBox Text="{Binding Quota}" />
         </StackPanel>
 
         <StackPanel
