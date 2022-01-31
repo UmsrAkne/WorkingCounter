@@ -15,7 +15,7 @@
         public DateTime AdditionDate { get; set; }
 
         [Required]
-        public DateTime StartDate { get; set; }
+        public DateTime StartDate { get; set; } = DateTime.Now;
 
         [Required]
         public DateTime LimitDate { get; set; }

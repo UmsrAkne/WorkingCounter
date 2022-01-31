@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\DateToIntConverter.cs" />
     <Compile Include="ViewModels\WorkAdditionWindowViewModel.cs" />
     <Compile Include="Views\WorkAdditionWindow.xaml.cs">
       <DependentUpon>WorkAdditionWindow.xaml</DependentUpon>
