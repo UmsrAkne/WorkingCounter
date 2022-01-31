@@ -1,6 +1,7 @@
 ﻿namespace WorkingCounter.ViewModels
 {
     using System;
+    using System.Collections.ObjectModel;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Services.Dialogs;
@@ -9,12 +10,15 @@
     public class WorkAdditionWindowViewModel : BindableBase, IDialogAware
     {
         private Work work = new Work();
+        private ObservableCollection<Work> works = new ObservableCollection<Work>();
         private string name;
         private int dateCountToLimit;
         private int dateCountToStart;
         private int quota;
 
         public event Action<IDialogResult> RequestClose;
+
+        public ObservableCollection<Work> Works { get => works; set => SetProperty(ref works, value); }
 
         public string Title => "New work window";
 
@@ -79,6 +83,7 @@
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
+            Works.Add(new Work());
         }
     }
 }
