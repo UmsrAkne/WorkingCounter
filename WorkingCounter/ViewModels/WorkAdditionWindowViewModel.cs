@@ -72,6 +72,11 @@
             RequestClose.Invoke(new DialogResult());
         });
 
+        public DelegateCommand AddWorkCommand => new DelegateCommand(() =>
+        {
+            Works.Add(new Work());
+        });
+
         public bool CanCloseDialog()
         {
             return true;
