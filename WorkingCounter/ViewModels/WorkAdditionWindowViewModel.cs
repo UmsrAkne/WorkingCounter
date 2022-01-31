@@ -2,15 +2,18 @@
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Services.Dialogs;
     using WorkingCounter.Models;
+    using WorkingCounter.Models.DBs;
 
     public class WorkAdditionWindowViewModel : BindableBase, IDialogAware
     {
         private Work work = new Work();
         private ObservableCollection<Work> works = new ObservableCollection<Work>();
+        private WorkingDbContext workingDbContext;
         private string name;
         private int dateCountToLimit;
         private int dateCountToStart;
@@ -62,9 +65,13 @@
 
         public DelegateCommand CloseCommand => new DelegateCommand(() =>
         {
-            var result = new DialogResult();
-            result.Parameters.Add(nameof(Work), work);
-            RequestClose.Invoke(result);
+            Works.ToList().ForEach((w) =>
+            {
+                workingDbContext.Works.Add(w);
+            });
+
+            workingDbContext.SaveChanges();
+            RequestClose.Invoke(new DialogResult());
         });
 
         public DelegateCommand CloseAndDisposeCommand => new DelegateCommand(() =>
@@ -88,6 +95,7 @@
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
+            workingDbContext = parameters.GetValue<WorkingDbContext>(nameof(WorkingDbContext));
             Works.Add(new Work());
         }
     }

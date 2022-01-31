@@ -30,7 +30,7 @@
         public int Quota { get; set; }
 
         [Required]
-        public string Unit { get; set; }
+        public string Unit { get; set; } = string.Empty;
 
         [NotMapped]
         public List<WorkingUnit> Units { get; set; }

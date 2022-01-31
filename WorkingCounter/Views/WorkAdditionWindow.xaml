@@ -41,7 +41,7 @@
                     <StackPanel Orientation="Horizontal">
                         <StackPanel.Resources>
                             <Style TargetType="TextBox">
-                                <Setter Property="Width" Value="80" />
+                                <Setter Property="Width" Value="50" />
                                 <Setter Property="Margin" Value="0,0,15,0" />
                             </Style>
 
@@ -52,16 +52,19 @@
                         </StackPanel.Resources>
 
                         <TextBlock Text="Title : " />
-                        <TextBox Width="100" />
+                        <TextBox Width="100" Text="{Binding Name}" />
 
                         <TextBlock Text="開始日 : " />
-                        <TextBox />
+                        <TextBox Text="{Binding StartDate}" />
 
                         <TextBlock Text="締切日 : " />
-                        <TextBox />
+                        <TextBox Text="{Binding LimitDate}" />
 
                         <TextBlock Text="目標値 : " />
-                        <TextBox />
+                        <TextBox Text="{Binding Quota}" />
+
+                        <TextBlock Text="単位 : " />
+                        <TextBox Text="{Binding Unit}" />
 
                     </StackPanel>
                 </DataTemplate>
