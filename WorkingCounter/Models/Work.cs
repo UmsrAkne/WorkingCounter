@@ -18,10 +18,10 @@
         public DateTime StartDate { get; set; } = DateTime.Now;
 
         [Required]
-        public DateTime LimitDate { get; set; }
+        public DateTime LimitDate { get; set; } = DateTime.Today.AddDays(3);
 
         [Required]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// ノルマを表す 

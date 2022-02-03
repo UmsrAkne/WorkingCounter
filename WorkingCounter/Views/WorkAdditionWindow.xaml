@@ -61,7 +61,7 @@
                         <TextBox Text="{Binding StartDate, Converter={StaticResource DateToIntConverter}}" />
 
                         <TextBlock Text="締切日 : " />
-                        <TextBox Text="{Binding LimitDate}" />
+                        <TextBox Text="{Binding LimitDate, Converter={StaticResource DateToIntConverter}}" />
 
                         <TextBlock Text="目標値 : " />
                         <TextBox Text="{Binding Quota}" />
