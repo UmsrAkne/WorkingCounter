@@ -2,6 +2,7 @@
     x:Class="WorkingCounter.Views.WorkAdditionWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Models="clr-namespace:WorkingCounter.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WorkingCounter.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -15,6 +16,8 @@
             <Setter Property="FontSize" Value="16" />
             <Setter Property="Foreground" Value="WhiteSmoke" />
         </Style>
+        <Models:DateToIntConverter x:Key="DateToIntConverter" />
+
     </Page.Resources>
 
     <Grid Background="{StaticResource darkBgBrush}">
@@ -26,50 +29,76 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition />
             <RowDefinition Height="auto" />
-            <RowDefinition />
-            <RowDefinition />
         </Grid.RowDefinitions>
 
+        <ListView
+            Grid.RowSpan="1"
+            Grid.ColumnSpan="3"
+            Background="{StaticResource darkBgBrush}"
+            ItemsSource="{Binding Works}">
 
-        <TextBlock
-            Grid.Row="0"
-            HorizontalAlignment="Center"
-            Text="Title" />
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBox">
+                                <Setter Property="Width" Value="50" />
+                                <Setter Property="Margin" Value="0,0,15,0" />
+                            </Style>
 
-        <TextBox
-            Grid.Row="0"
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="White" />
+                            </Style>
+
+                        </StackPanel.Resources>
+
+                        <TextBlock Text="Title : " />
+                        <TextBox Width="100" Text="{Binding Name}" />
+
+                        <TextBlock Text="開始日 : " />
+                        <TextBox Text="{Binding StartDate, Converter={StaticResource DateToIntConverter}}" />
+
+                        <TextBlock Text="締切日 : " />
+                        <TextBox Text="{Binding LimitDate, Converter={StaticResource DateToIntConverter}}" />
+
+                        <TextBlock Text="目標値 : " />
+                        <TextBox Text="{Binding Quota}" />
+
+                        <TextBlock Text="単位 : " />
+                        <TextBox Text="{Binding Unit}" />
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button
+            Grid.Row="1"
             Grid.Column="1"
-            Grid.ColumnSpan="2"
-            Height="auto"
-            Margin="2,0" />
-
-        <StackPanel Grid.Row="1" Margin="2">
-            <TextBlock HorizontalAlignment="Center" Text="開始日" />
-            <TextBlock HorizontalAlignment="Center" Text="締切日" />
-            <TextBlock HorizontalAlignment="Center" Text="ノルマ" />
-        </StackPanel>
+            Width="100"
+            Margin="0,5"
+            Command="{Binding AddWorkCommand}"
+            Content="タスクを追加する" />
 
         <StackPanel
             Grid.Row="1"
-            Grid.Column="1"
-            Margin="2">
-            <ComboBox />
-            <ComboBox />
-            <ComboBox />
-        </StackPanel>
-
-        <StackPanel
-            Grid.Row="2"
             Grid.Column="2"
+            Margin="5"
             VerticalAlignment="Top"
             Orientation="Horizontal">
 
             <Button
                 Width="100"
                 Margin="5,0"
+                Command="{Binding CloseCommand}"
                 Content="追加する" />
-            <Button Width="100" Content="破棄する" />
+
+            <Button
+                Width="100"
+                Command="{Binding CloseAndDisposeCommand}"
+                Content="破棄する" />
         </StackPanel>
 
 
