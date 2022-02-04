@@ -81,6 +81,7 @@
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="340" />
                             <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
                         <Border Grid.Column="0">
@@ -191,6 +192,11 @@
                                 <TextBlock Text="{Binding Quota}" />
                             </StackPanel>
                         </Border>
+
+                        <TextBlock
+                            Grid.Column="4"
+                            HorizontalAlignment="Left"
+                            Text="{Binding Unit}" />
 
                     </Grid>
 
