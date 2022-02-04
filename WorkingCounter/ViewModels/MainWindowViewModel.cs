@@ -11,12 +11,12 @@
 
     public class MainWindowViewModel : BindableBase
     {
-        private string title = "Prism Application";
+        private readonly WorkingDbContext workingDbContext;
+        private readonly IDialogService dialogService;
 
+        private string title = "Prism Application";
         private ObservableCollection<Work> works;
-        private WorkingDbContext workingDbContext;
         private string inputText;
-        private IDialogService dialogService;
 
         public MainWindowViewModel(IDialogService dialogService)
         {
@@ -30,27 +30,30 @@
 
         public DelegateCommand AddWorkCommand => new DelegateCommand(() =>
         {
-            var work = new Work();
-            work.Name = InputText;
-            work.AdditionDate = System.DateTime.Now;
-            work.StartDate = System.DateTime.Today;
-            work.LimitDate = System.DateTime.Today.AddDays(1);
-            work.Unit = "1p";
-            workingDbContext.Insert(work);
+            var work = new Work
+            {
+                Name = InputText,
+                AdditionDate = System.DateTime.Now,
+                StartDate = System.DateTime.Today,
+                LimitDate = System.DateTime.Today.AddDays(1),
+                Unit = "1p"
+            };
 
+            workingDbContext.Insert(work);
             InputText = string.Empty;
             ReloadWorks();
         });
 
         public DelegateCommand<ListViewItem> AddWorkingUnitCommand => new DelegateCommand<ListViewItem>((ListViewItem l) =>
         {
-            Work currentWork = l.Content as Work;
-
-            if (currentWork != null)
+            if (l.Content is Work currentWork)
             {
-                var unit = new WorkingUnit();
-                unit.ParentWorkId = currentWork.Id;
-                unit.AdditionDate = System.DateTime.Now;
+                var unit = new WorkingUnit
+                {
+                    ParentWorkId = currentWork.Id,
+                    AdditionDate = System.DateTime.Now
+                };
+
                 workingDbContext.Insert(unit);
                 ReloadWorks();
             }
@@ -60,9 +63,12 @@
         {
             if (w != null)
             {
-                var param = new DialogParameters();
-                param.Add(nameof(Work), w);
-                param.Add(nameof(WorkingDbContext), workingDbContext);
+                var param = new DialogParameters
+                {
+                    { nameof(Work), w },
+                    { nameof(WorkingDbContext), workingDbContext }
+                };
+
                 dialogService.ShowDialog(nameof(DetailWindow), param, (IDialogResult result) => { });
                 ReloadWorks();
             }
@@ -70,8 +76,11 @@
 
         public DelegateCommand ShowAdditionWindowCommand => new DelegateCommand(() =>
         {
-            var param = new DialogParameters();
-            param.Add(nameof(WorkingDbContext), workingDbContext);
+            var param = new DialogParameters
+            {
+                { nameof(WorkingDbContext), workingDbContext }
+            };
+
             dialogService.ShowDialog(nameof(WorkAdditionWindow), param, (IDialogResult result) => { });
             ReloadWorks();
         });
