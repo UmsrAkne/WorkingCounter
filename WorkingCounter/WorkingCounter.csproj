@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\DateToIntConverter.cs" />
+    <Compile Include="Models\WorkTemplate.cs" />
     <Compile Include="ViewModels\WorkAdditionWindowViewModel.cs" />
     <Compile Include="Views\WorkAdditionWindow.xaml.cs">
       <DependentUpon>WorkAdditionWindow.xaml</DependentUpon>
