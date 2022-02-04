@@ -11,7 +11,7 @@
 
     public class WorkAdditionWindowViewModel : BindableBase, IDialogAware
     {
-        private Work work = new Work();
+        private readonly Work work = new Work();
         private ObservableCollection<Work> works = new ObservableCollection<Work>();
         private WorkingDbContext workingDbContext;
         private string name;

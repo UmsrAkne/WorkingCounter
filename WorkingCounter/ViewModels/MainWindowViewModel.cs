@@ -11,12 +11,12 @@
 
     public class MainWindowViewModel : BindableBase
     {
-        private string title = "Prism Application";
+        private readonly WorkingDbContext workingDbContext;
+        private readonly IDialogService dialogService;
 
+        private string title = "Prism Application";
         private ObservableCollection<Work> works;
-        private WorkingDbContext workingDbContext;
         private string inputText;
-        private IDialogService dialogService;
 
         public MainWindowViewModel(IDialogService dialogService)
         {
