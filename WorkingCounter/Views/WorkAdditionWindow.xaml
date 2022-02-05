@@ -37,7 +37,7 @@
             Grid.Row="0"
             Grid.ColumnSpan="3"
             Orientation="Horizontal">
-            <ComboBox Width="200" />
+            <ComboBox Width="200" ItemsSource="{Binding TemplateNameList}" />
         </StackPanel>
 
         <ListView

@@ -1,6 +1,7 @@
 ﻿namespace WorkingCounter.ViewModels
 {
     using System;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using Prism.Commands;
@@ -19,6 +20,7 @@
         private int dateCountToStart;
         private int quota;
         private string templateName;
+        private List<string> templateNameList;
 
         public event Action<IDialogResult> RequestClose;
 
@@ -65,6 +67,8 @@
         }
 
         public string TemplateName { get => templateName; set => SetProperty(ref templateName, value); }
+
+        public List<string> TemplateNameList { get => templateNameList; set => SetProperty(ref templateNameList, value); }
 
         public DelegateCommand CloseCommand => new DelegateCommand(() =>
         {
@@ -116,6 +120,8 @@
         {
             workingDbContext = parameters.GetValue<WorkingDbContext>(nameof(WorkingDbContext));
             Works.Add(new Work());
+
+            TemplateNameList = workingDbContext.WorkTemplates.GroupBy(w => w.GroupName).Select(w => w.Key).ToList();
         }
     }
 }
