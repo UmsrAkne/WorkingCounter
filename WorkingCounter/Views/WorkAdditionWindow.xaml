@@ -29,12 +29,20 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
             <RowDefinition />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
+        <StackPanel
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            Orientation="Horizontal">
+            <ComboBox Width="200" />
+        </StackPanel>
+
         <ListView
-            Grid.RowSpan="1"
+            Grid.Row="1"
             Grid.ColumnSpan="3"
             Background="{StaticResource darkBgBrush}"
             ItemsSource="{Binding Works}">
@@ -75,15 +83,25 @@
         </ListView>
 
         <Button
-            Grid.Row="1"
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Width="100"
+            Margin="0,5"
+            HorizontalAlignment="Left"
+            Content="Templateを保存" />
+
+        <Button
+            Grid.Row="2"
             Grid.Column="1"
             Width="100"
             Margin="0,5"
+            HorizontalAlignment="Right"
             Command="{Binding AddWorkCommand}"
             Content="タスクを追加する" />
 
         <StackPanel
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="2"
             Margin="5"
             VerticalAlignment="Top"

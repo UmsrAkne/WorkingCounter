@@ -89,13 +89,13 @@
             var dtiConv = new DateToIntConverter();
             Works.ToList().ForEach(w =>
             {
-                var t = new WorkTemplate
+                workingDbContext.Insert(new WorkTemplate()
                 {
                     DayCountToLimit = Convert.ToInt32(dtiConv.Convert(w.LimitDate, typeof(double), null, null)),
                     DayCountToStart = Convert.ToInt32(dtiConv.Convert(w.StartDate, typeof(double), null, null)),
                     Name = w.Name,
                     Quota = w.Quota
-                };
+                });
             });
         });
 

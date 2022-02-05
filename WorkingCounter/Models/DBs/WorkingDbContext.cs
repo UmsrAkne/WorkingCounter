@@ -15,6 +15,8 @@
 
         public DbSet<WorkingUnit> WorkingUnits { get; set; }
 
+        public DbSet<WorkTemplate> WorkTemplates { get; set; }
+
         public void CreateDatabase()
         {
             if (!File.Exists(databaseFileName))
@@ -32,6 +34,12 @@
         public void Insert(WorkingUnit workingUnit)
         {
             WorkingUnits.Add(workingUnit);
+            SaveChanges();
+        }
+
+        public void Insert(WorkTemplate workTemplate)
+        {
+            WorkTemplates.Add(workTemplate);
             SaveChanges();
         }
 
