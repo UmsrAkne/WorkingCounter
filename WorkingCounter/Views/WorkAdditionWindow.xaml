@@ -25,7 +25,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80" />
             <ColumnDefinition />
-            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -82,41 +81,45 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button
+        <StackPanel
             Grid.Row="2"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Width="100"
-            Margin="0,5"
-            HorizontalAlignment="Left"
-            Content="Templateを保存" />
-
-        <Button
-            Grid.Row="2"
-            Grid.Column="1"
-            Width="100"
-            Margin="0,5"
-            HorizontalAlignment="Right"
-            Command="{Binding AddWorkCommand}"
-            Content="タスクを追加する" />
-
-        <StackPanel
-            Grid.Row="2"
-            Grid.Column="2"
             Margin="5"
             VerticalAlignment="Top"
             Orientation="Horizontal">
 
-            <Button
-                Width="100"
-                Margin="5,0"
-                Command="{Binding CloseCommand}"
-                Content="追加する" />
+            <TextBox
+                Width="170"
+                Margin="0,5"
+                Text="{Binding TemplateName}" />
 
             <Button
                 Width="100"
+                Margin="0,5"
+                HorizontalAlignment="Left"
+                Command="{Binding SaveTemplateCommand}"
+                Content="Templateを保存" />
+
+            <Button
+                Width="100"
+                Margin="15,5"
+                HorizontalAlignment="Right"
+                Command="{Binding AddWorkCommand}"
+                Content="タスクを追加する" />
+
+
+            <Button
+                Width="70"
+                Margin="5,5"
+                Command="{Binding CloseCommand}"
+                Content="決定" />
+
+            <Button
+                Width="70"
+                Margin="5,5"
                 Command="{Binding CloseAndDisposeCommand}"
-                Content="破棄する" />
+                Content="破棄" />
         </StackPanel>
 
 

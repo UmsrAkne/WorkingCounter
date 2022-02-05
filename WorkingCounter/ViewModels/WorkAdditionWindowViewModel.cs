@@ -18,6 +18,7 @@
         private int dateCountToLimit;
         private int dateCountToStart;
         private int quota;
+        private string templateName;
 
         public event Action<IDialogResult> RequestClose;
 
@@ -63,6 +64,8 @@
             }
         }
 
+        public string TemplateName { get => templateName; set => SetProperty(ref templateName, value); }
+
         public DelegateCommand CloseCommand => new DelegateCommand(() =>
         {
             Works.ToList().ForEach((w) =>
@@ -93,6 +96,7 @@
                 {
                     DayCountToLimit = Convert.ToInt32(dtiConv.Convert(w.LimitDate, typeof(double), null, null)),
                     DayCountToStart = Convert.ToInt32(dtiConv.Convert(w.StartDate, typeof(double), null, null)),
+                    GroupName = TemplateName,
                     Name = w.Name,
                     Quota = w.Quota
                 });
