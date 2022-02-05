@@ -21,6 +21,7 @@
         private int quota;
         private string templateName;
         private List<string> templateNameList;
+        private string comboboxSelectedItem;
 
         public event Action<IDialogResult> RequestClose;
 
@@ -70,6 +71,8 @@
 
         public List<string> TemplateNameList { get => templateNameList; set => SetProperty(ref templateNameList, value); }
 
+        public string ComboboxSelectedItem { get => comboboxSelectedItem; set => SetProperty(ref comboboxSelectedItem, value); }
+
         public DelegateCommand CloseCommand => new DelegateCommand(() =>
         {
             Works.ToList().ForEach((w) =>
@@ -105,6 +108,21 @@
                     Quota = w.Quota
                 });
             });
+        });
+
+        public DelegateCommand LoadTemplateCommand => new DelegateCommand(() =>
+        {
+            Works = new ObservableCollection<Work>(
+                workingDbContext.WorkTemplates
+                .Where(wt => ComboboxSelectedItem == wt.GroupName)
+                .Select(wt => new Work()
+                {
+                    Name = wt.Name,
+                    LimitDate = DateTime.Today.AddDays(wt.DayCountToLimit),
+                    StartDate = DateTime.Today.AddDays(wt.DayCountToStart),
+                    Quota = wt.Quota,
+                    Unit = wt.Unit
+                }).ToList());
         });
 
         public bool CanCloseDialog()
