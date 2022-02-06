@@ -1,6 +1,7 @@
 ﻿namespace WorkingCounter.ViewModels
 {
     using System;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using Prism.Commands;
@@ -18,6 +19,10 @@
         private int dateCountToLimit;
         private int dateCountToStart;
         private int quota;
+        private string templateName;
+        private List<string> templateNameList;
+        private string comboboxSelectedItem;
+        private bool saveButtonIsEnabled;
 
         public event Action<IDialogResult> RequestClose;
 
@@ -63,6 +68,22 @@
             }
         }
 
+        public string TemplateName
+        {
+            get => templateName;
+            set
+            {
+                SetProperty(ref templateName, value);
+                SaveButtonIsEnabled = value != string.Empty;
+            }
+        }
+
+        public List<string> TemplateNameList { get => templateNameList; set => SetProperty(ref templateNameList, value); }
+
+        public string ComboboxSelectedItem { get => comboboxSelectedItem; set => SetProperty(ref comboboxSelectedItem, value); }
+
+        public bool SaveButtonIsEnabled { get => saveButtonIsEnabled; set => SetProperty(ref saveButtonIsEnabled, value); }
+
         public DelegateCommand CloseCommand => new DelegateCommand(() =>
         {
             Works.ToList().ForEach((w) =>
@@ -84,6 +105,37 @@
             Works.Add(new Work());
         });
 
+        public DelegateCommand SaveTemplateCommand => new DelegateCommand(() =>
+        {
+            var dtiConv = new DateToIntConverter();
+            Works.ToList().ForEach(w =>
+            {
+                workingDbContext.Insert(new WorkTemplate()
+                {
+                    DayCountToLimit = Convert.ToInt32(dtiConv.Convert(w.LimitDate, typeof(double), null, null)),
+                    DayCountToStart = Convert.ToInt32(dtiConv.Convert(w.StartDate, typeof(double), null, null)),
+                    GroupName = TemplateName,
+                    Name = w.Name,
+                    Quota = w.Quota
+                });
+            });
+        });
+
+        public DelegateCommand LoadTemplateCommand => new DelegateCommand(() =>
+        {
+            Works = new ObservableCollection<Work>(
+                workingDbContext.WorkTemplates
+                .Where(wt => ComboboxSelectedItem == wt.GroupName)
+                .Select(wt => new Work()
+                {
+                    Name = wt.Name,
+                    LimitDate = DateTime.Today.AddDays(wt.DayCountToLimit),
+                    StartDate = DateTime.Today.AddDays(wt.DayCountToStart),
+                    Quota = wt.Quota,
+                    Unit = wt.Unit
+                }).ToList());
+        });
+
         public bool CanCloseDialog()
         {
             return true;
@@ -97,6 +149,8 @@
         {
             workingDbContext = parameters.GetValue<WorkingDbContext>(nameof(WorkingDbContext));
             Works.Add(new Work());
+
+            TemplateNameList = workingDbContext.WorkTemplates.GroupBy(w => w.GroupName).Select(w => w.Key).ToList();
         }
     }
 }
