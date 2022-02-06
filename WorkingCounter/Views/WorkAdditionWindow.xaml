@@ -104,14 +104,15 @@
             <TextBox
                 Width="170"
                 Margin="0,5"
-                Text="{Binding TemplateName}" />
+                Text="{Binding TemplateName, UpdateSourceTrigger=PropertyChanged}" />
 
             <Button
                 Width="100"
                 Margin="0,5"
                 HorizontalAlignment="Left"
                 Command="{Binding SaveTemplateCommand}"
-                Content="Templateを保存" />
+                Content="Templateを保存"
+                IsEnabled="{Binding SaveButtonIsEnabled}" />
 
             <Button
                 Width="100"

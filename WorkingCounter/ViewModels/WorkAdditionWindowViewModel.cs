@@ -22,6 +22,7 @@
         private string templateName;
         private List<string> templateNameList;
         private string comboboxSelectedItem;
+        private bool saveButtonIsEnabled;
 
         public event Action<IDialogResult> RequestClose;
 
@@ -67,11 +68,21 @@
             }
         }
 
-        public string TemplateName { get => templateName; set => SetProperty(ref templateName, value); }
+        public string TemplateName
+        {
+            get => templateName;
+            set
+            {
+                SetProperty(ref templateName, value);
+                SaveButtonIsEnabled = value != string.Empty;
+            }
+        }
 
         public List<string> TemplateNameList { get => templateNameList; set => SetProperty(ref templateNameList, value); }
 
         public string ComboboxSelectedItem { get => comboboxSelectedItem; set => SetProperty(ref comboboxSelectedItem, value); }
+
+        public bool SaveButtonIsEnabled { get => saveButtonIsEnabled; set => SetProperty(ref saveButtonIsEnabled, value); }
 
         public DelegateCommand CloseCommand => new DelegateCommand(() =>
         {
