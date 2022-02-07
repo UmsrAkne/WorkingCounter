@@ -124,7 +124,8 @@
                     DayCountToStart = Convert.ToInt32(dtiConv.Convert(w.StartDate, typeof(double), null, null)),
                     GroupName = TemplateName,
                     Name = w.Name,
-                    Quota = w.Quota
+                    Quota = w.Quota,
+                    Unit = w.Unit
                 });
             });
         });
