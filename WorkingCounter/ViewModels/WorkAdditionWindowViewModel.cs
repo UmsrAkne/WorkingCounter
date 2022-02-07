@@ -107,6 +107,14 @@
 
         public DelegateCommand SaveTemplateCommand => new DelegateCommand(() =>
         {
+            var existingWorks = workingDbContext.WorkTemplates.Where(w => w.GroupName == TemplateName);
+
+            if (existingWorks.Count() != 0)
+            {
+                // 既に同一のグループ名が宣言されていた場合は一度消して書き直す。
+                workingDbContext.WorkTemplates.RemoveRange(existingWorks);
+            }
+
             var dtiConv = new DateToIntConverter();
             Works.ToList().ForEach(w =>
             {
