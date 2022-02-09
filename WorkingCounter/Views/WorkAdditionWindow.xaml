@@ -7,10 +7,12 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:WorkingCounter.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="Page"
     Title="WorkAdditionWindow"
-    Width="600"
+    Width="630"
     Height="250"
     mc:Ignorable="d">
+
     <Page.Resources>
         <SolidColorBrush x:Key="darkBgBrush" Color="#333" />
         <Style TargetType="TextBlock">
@@ -87,6 +89,12 @@
 
                         <TextBlock Text="単位 : " />
                         <TextBox Text="{Binding Unit}" />
+
+                        <Button
+                            Padding="4,1"
+                            Command="{Binding DataContext.DeleteWorkCommand, ElementName=Page}"
+                            CommandParameter="{Binding Content, RelativeSource={RelativeSource AncestorType=ListViewItem}}"
+                            Content="削除" />
 
                     </StackPanel>
                 </DataTemplate>
