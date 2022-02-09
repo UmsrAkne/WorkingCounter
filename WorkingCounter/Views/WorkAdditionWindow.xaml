@@ -8,7 +8,7 @@
     xmlns:local="clr-namespace:WorkingCounter.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="WorkAdditionWindow"
-    Width="600"
+    Width="630"
     Height="250"
     mc:Ignorable="d">
     <Page.Resources>
@@ -87,6 +87,11 @@
 
                         <TextBlock Text="単位 : " />
                         <TextBox Text="{Binding Unit}" />
+
+                        <Button
+                            Padding="4,1"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}}"
+                            Content="削除" />
 
                     </StackPanel>
                 </DataTemplate>
