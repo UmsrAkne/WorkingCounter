@@ -145,6 +145,16 @@
                 }).ToList());
         });
 
+
+        public DelegateCommand<Work> DeleteWorkCommand => new DelegateCommand<Work>((w) =>
+        {
+            var index = Works.IndexOf(w);
+            if (index >= 0)
+            {
+                Works.RemoveAt(index);
+            }
+        });
+
         public bool CanCloseDialog()
         {
             return true;
