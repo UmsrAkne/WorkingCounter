@@ -145,7 +145,6 @@
                 }).ToList());
         });
 
-
         public DelegateCommand<Work> DeleteWorkCommand => new DelegateCommand<Work>((w) =>
         {
             var index = Works.IndexOf(w);

@@ -16,7 +16,6 @@
 
         private string title = "Prism Application";
         private ObservableCollection<Work> works;
-        private string inputText;
 
         public MainWindowViewModel(IDialogService dialogService)
         {
@@ -27,22 +26,6 @@
 
             this.dialogService = dialogService;
         }
-
-        public DelegateCommand AddWorkCommand => new DelegateCommand(() =>
-        {
-            var work = new Work
-            {
-                Name = InputText,
-                AdditionDate = System.DateTime.Now,
-                StartDate = System.DateTime.Today,
-                LimitDate = System.DateTime.Today.AddDays(1),
-                Unit = "1p"
-            };
-
-            workingDbContext.Insert(work);
-            InputText = string.Empty;
-            ReloadWorks();
-        });
 
         public DelegateCommand<ListViewItem> AddWorkingUnitCommand => new DelegateCommand<ListViewItem>((ListViewItem l) =>
         {
@@ -92,8 +75,6 @@
         }
 
         public ObservableCollection<Work> Works { get => works; set => SetProperty(ref works, value); }
-
-        public string InputText { get => inputText; set => SetProperty(ref inputText, value); }
 
         private void ReloadWorks()
         {

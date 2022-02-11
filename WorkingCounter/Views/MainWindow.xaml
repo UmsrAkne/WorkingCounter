@@ -21,10 +21,6 @@
     </Window.Style>
 
     <Window.InputBindings>
-        <KeyBinding
-            Key="Return"
-            Command="{Binding AddWorkCommand}"
-            Modifiers="Ctrl" />
 
         <KeyBinding
             Key="N"
@@ -34,20 +30,23 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
+            <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
 
-        <TextBox
+        <Menu
             Grid.Row="0"
-            Padding="4"
-            Background="{StaticResource DarkGray}"
+            Padding="0,3"
             FontFamily="BIZ UDゴシック"
-            FontSize="14"
-            Foreground="White"
-            Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged}" />
+            FontSize="14">
+
+            <MenuItem Header="File">
+                <MenuItem Command="{Binding ShowAdditionWindowCommand}" Header="Add" />
+            </MenuItem>
+
+        </Menu>
 
         <ListView
             Name="listView"
