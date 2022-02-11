@@ -28,22 +28,6 @@
             this.dialogService = dialogService;
         }
 
-        public DelegateCommand AddWorkCommand => new DelegateCommand(() =>
-        {
-            var work = new Work
-            {
-                Name = InputText,
-                AdditionDate = System.DateTime.Now,
-                StartDate = System.DateTime.Today,
-                LimitDate = System.DateTime.Today.AddDays(1),
-                Unit = "1p"
-            };
-
-            workingDbContext.Insert(work);
-            InputText = string.Empty;
-            ReloadWorks();
-        });
-
         public DelegateCommand<ListViewItem> AddWorkingUnitCommand => new DelegateCommand<ListViewItem>((ListViewItem l) =>
         {
             if (l.Content is Work currentWork)
