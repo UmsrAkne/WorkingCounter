@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WorkingCounter.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:WorkingCounter.Models"
     Title="DetailWindow"
     Width="600"
     Height="250"
@@ -12,6 +13,8 @@
     mc:Ignorable="d">
 
     <Page.Resources>
+        <models:DateTimeConverter x:Key="DateTimeConverter" />
+
         <SolidColorBrush x:Key="DarkGray" Color="#222" />
 
         <Style TargetType="TextBlock">
@@ -73,7 +76,7 @@
         <TextBox
             Grid.Row="1"
             Grid.Column="1"
-            Text="{Binding Work.AdditionDate}" />
+            Text="{Binding Work.AdditionDate, Converter={StaticResource DateTimeConverter}}" />
 
         <TextBlock
             Grid.Row="1"
@@ -84,7 +87,7 @@
         <TextBox
             Grid.Row="1"
             Grid.Column="3"
-            Text="{Binding Work.StartDate}" />
+            Text="{Binding Work.StartDate, Converter={StaticResource DateTimeConverter}}" />
 
         <TextBlock
             Grid.Row="2"
@@ -95,7 +98,7 @@
         <TextBox
             Grid.Row="2"
             Grid.Column="1"
-            Text="{Binding Work.LimitDate}" />
+            Text="{Binding Work.LimitDate, Converter={StaticResource DateTimeConverter}}" />
 
         <StackPanel
             Grid.Row="3"
@@ -130,7 +133,7 @@
                         <TextBlock
                             Grid.Column="0"
                             Foreground="WhiteSmoke"
-                            Text="{Binding AdditionDate}" />
+                            Text="{Binding AdditionDate, Converter={StaticResource DateTimeConverter}}" />
                         <TextBlock
                             Grid.Column="1"
                             Foreground="WhiteSmoke"
