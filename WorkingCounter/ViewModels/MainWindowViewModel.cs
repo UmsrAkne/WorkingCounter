@@ -16,7 +16,6 @@
 
         private string title = "Prism Application";
         private ObservableCollection<Work> works;
-        private string inputText;
 
         public MainWindowViewModel(IDialogService dialogService)
         {
@@ -76,8 +75,6 @@
         }
 
         public ObservableCollection<Work> Works { get => works; set => SetProperty(ref works, value); }
-
-        public string InputText { get => inputText; set => SetProperty(ref inputText, value); }
 
         private void ReloadWorks()
         {
