@@ -17,5 +17,7 @@
 
         [Required]
         public string Memo { get; set; } = string.Empty;
+
+        public bool MemoIsEmpty => Memo == string.Empty;
     }
 }
