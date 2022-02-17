@@ -120,22 +120,28 @@
             x:Name="workingCountList"
             Grid.Row="4"
             Grid.ColumnSpan="4"
+            HorizontalContentAlignment="Stretch"
             Background="{StaticResource DarkGray}"
             ItemsSource="{Binding WorkingUnits}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
+                            <ColumnDefinition Width="auto" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
                         <TextBlock
                             Grid.Column="0"
+                            Margin="10,0"
+                            VerticalAlignment="Center"
                             Foreground="WhiteSmoke"
                             Text="{Binding AdditionDate, Converter={StaticResource DateTimeConverter}}" />
-                        <TextBlock
+
+                        <TextBox
                             Grid.Column="1"
+                            VerticalAlignment="Center"
+                            FontSize="13"
                             Foreground="WhiteSmoke"
                             Text="{Binding Memo}" />
                     </Grid>
