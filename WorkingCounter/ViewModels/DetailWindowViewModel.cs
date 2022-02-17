@@ -50,6 +50,7 @@
 
         public void OnDialogClosed()
         {
+            workingDbContext.SaveChanges();
         }
 
         public void OnDialogOpened(IDialogParameters parameters)

@@ -165,6 +165,11 @@
                                                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Path=Content.IsComplete}" Value="False">
                                                             <Setter Property="Background" Value="WhiteSmoke" />
                                                         </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding MemoIsEmpty}" Value="False">
+                                                            <Setter Property="BorderBrush" Value="SkyBlue" />
+                                                            <Setter Property="BorderThickness" Value="1" />
+                                                        </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
                                             </Border.Style>
