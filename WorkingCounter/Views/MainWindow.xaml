@@ -12,6 +12,12 @@
 
     <Window.Resources>
         <SolidColorBrush x:Key="DarkGray" Color="#222" />
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="BIZ UDゴシック" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Padding" Value="2" />
+        </Style>
+
     </Window.Resources>
 
     <Window.Style>
@@ -36,17 +42,50 @@
 
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
 
-        <Menu
-            Grid.Row="0"
-            Padding="0,3"
-            FontFamily="BIZ UDゴシック"
-            FontSize="14">
+        <StackPanel Grid.Row="0">
+            <Menu
+                Padding="0,3"
+                FontFamily="BIZ UDゴシック"
+                FontSize="14">
 
-            <MenuItem Header="File">
-                <MenuItem Command="{Binding ShowAdditionWindowCommand}" Header="Add" />
-            </MenuItem>
+                <MenuItem Header="File">
+                    <MenuItem Command="{Binding ShowAdditionWindowCommand}" Header="Add" />
+                </MenuItem>
 
-        </Menu>
+            </Menu>
+
+            <Border Padding="6">
+                <StackPanel Orientation="Horizontal">
+
+                    <CheckBox
+                        Margin="10,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="DarkGray" />
+
+                    <TextBox Width="150" Text="" />
+
+                    <TextBlock
+                        FontFamily="BIZ UDゴシック"
+                        FontSize="16"
+                        Foreground="WhiteSmoke"
+                        Text=" - " />
+
+                    <TextBox Width="50" />
+
+                    <TextBlock
+                        Padding="10,0"
+                        VerticalAlignment="Center"
+                        FontFamily="BIZ UDゴシック"
+                        FontSize="16"
+                        Foreground="WhiteSmoke"
+                        Text="日間" />
+
+                </StackPanel>
+
+            </Border>
+
+        </StackPanel>
 
         <ListView
             Name="listView"
