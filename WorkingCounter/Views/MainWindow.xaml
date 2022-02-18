@@ -64,7 +64,8 @@
                         Margin="10,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Background="DarkGray" />
+                        Background="DarkGray"
+                        IsChecked="{Binding Filtering}" />
 
                     <TextBox Width="150" Text="{Binding FilteringStartDate, Converter={StaticResource DateConverter}}" />
 

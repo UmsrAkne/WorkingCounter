@@ -19,6 +19,7 @@
         private ObservableCollection<Work> works;
         private DateTime filteringStartDate = DateTime.Now;
         private int filteringDuration = 3;
+        private bool filtering;
 
         public MainWindowViewModel(IDialogService dialogService)
         {
@@ -87,10 +88,22 @@
 
         public int FilteringDuration { get => filteringDuration; set => SetProperty(ref filteringDuration, value); }
 
+        public bool Filtering
+        {
+            get => filtering;
+            set
+            {
+                SetProperty(ref filtering, value);
+                ReloadWorks();
+            }
+        }
+
         private void ReloadWorks()
         {
-            //var workList = workingDbContext.GetWorks();
-            var workList = workingDbContext.GetWorks(FilteringStartDate.Date, new TimeSpan(FilteringDuration, 0, 0, 0));
+            var workList = filtering
+                ? workingDbContext.GetWorks(FilteringStartDate.Date, new TimeSpan(FilteringDuration, 0, 0, 0))
+                : workingDbContext.GetWorks();
+
             workList.ForEach(w =>
             {
                 w.Units = workingDbContext.GetWorkingUnits(w.Id);
