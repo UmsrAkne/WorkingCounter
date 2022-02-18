@@ -89,7 +89,8 @@
 
         private void ReloadWorks()
         {
-            var workList = workingDbContext.GetWorks();
+            //var workList = workingDbContext.GetWorks();
+            var workList = workingDbContext.GetWorks(FilteringStartDate.Date, new TimeSpan(FilteringDuration, 0, 0, 0));
             workList.ForEach(w =>
             {
                 w.Units = workingDbContext.GetWorkingUnits(w.Id);

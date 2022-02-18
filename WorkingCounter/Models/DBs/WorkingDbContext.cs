@@ -1,5 +1,6 @@
 ﻿namespace WorkingCounter.Models.DBs
 {
+    using System;
     using System.Collections.Generic;
     using System.Data.SQLite;
     using System.IO;
@@ -46,6 +47,13 @@
         public List<Work> GetWorks()
         {
             return Works.Select(w => w).OrderByDescending(w => w.AdditionDate).ToList();
+        }
+
+        public List<Work> GetWorks(DateTime startDate, TimeSpan duration)
+        {
+            return Works.Where(w => w.StartDate >= startDate && w.StartDate <= startDate.AddDays(duration.TotalDays))
+                .OrderByDescending(w => w.AdditionDate)
+                .ToList();
         }
 
         public List<WorkingUnit> GetWorkingUnits(int parentWorkId)
