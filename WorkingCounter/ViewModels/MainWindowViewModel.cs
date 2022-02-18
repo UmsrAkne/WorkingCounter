@@ -83,7 +83,15 @@
         public DateTime FilteringStartDate
         {
             get => filteringStartDate;
-            set => SetProperty(ref filteringStartDate, value);
+            set
+            {
+                if (value == new DateTime())
+                {
+                    value = filteringStartDate;
+                }
+
+                SetProperty(ref filteringStartDate, value);
+            }
         }
 
         public int FilteringDuration { get => filteringDuration; set => SetProperty(ref filteringDuration, value); }
