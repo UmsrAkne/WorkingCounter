@@ -1,5 +1,6 @@
 ﻿namespace WorkingCounter.ViewModels
 {
+    using System;
     using System.Collections.ObjectModel;
     using System.Windows.Controls;
     using Prism.Commands;
@@ -16,6 +17,8 @@
 
         private string title = "Prism Application";
         private ObservableCollection<Work> works;
+        private DateTime filteringStartDate = DateTime.Now;
+        private int filteringDuration = 3;
 
         public MainWindowViewModel(IDialogService dialogService)
         {
@@ -75,6 +78,14 @@
         }
 
         public ObservableCollection<Work> Works { get => works; set => SetProperty(ref works, value); }
+
+        public DateTime FilteringStartDate
+        {
+            get => filteringStartDate;
+            set => SetProperty(ref filteringStartDate, value);
+        }
+
+        public int FilteringDuration { get => filteringDuration; set => SetProperty(ref filteringDuration, value); }
 
         private void ReloadWorks()
         {
