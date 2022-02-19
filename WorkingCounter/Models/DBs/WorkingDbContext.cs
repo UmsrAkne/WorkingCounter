@@ -51,7 +51,9 @@
 
         public List<Work> GetWorks(DateTime startDate, TimeSpan duration)
         {
-            return Works.Where(w => w.StartDate >= startDate && w.StartDate <= startDate.AddDays(duration.TotalDays))
+            return Works.Where(w =>
+                (w.StartDate >= startDate && w.StartDate <= startDate.AddDays(duration.TotalDays))
+                || (w.LimitDate >= startDate && w.LimitDate <= startDate.AddDays(duration.TotalDays)))
                 .OrderByDescending(w => w.AdditionDate)
                 .ToList();
         }
