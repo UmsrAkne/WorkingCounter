@@ -3,6 +3,7 @@
     using System;
     using System.Collections.ObjectModel;
     using System.Windows.Controls;
+    using System.Windows.Input;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Services.Dialogs;
@@ -72,6 +73,22 @@
             ReloadWorks();
         });
 
+        public DelegateCommand ForwardFilteringDateCommand =>
+            new DelegateCommand(() => FilteringStartDate = FilteringStartDate.AddDays(1));
+
+        public DelegateCommand BackFilteringDateCommand =>
+            new DelegateCommand(() => FilteringStartDate = FilteringStartDate.AddDays(-1));
+
+        public DelegateCommand DurationWidenCommand =>
+             new DelegateCommand(() => FilteringDuration++);
+
+        public DelegateCommand DurationNarrowCommand =>
+             new DelegateCommand(() =>
+             {
+                 FilteringDuration--;
+                 FilteringDuration = FilteringDuration <= 0 ? 0 : FilteringDuration;
+             });
+
         public string Title
         {
             get { return title; }
@@ -91,10 +108,19 @@
                 }
 
                 SetProperty(ref filteringStartDate, value);
+                ReloadWorks();
             }
         }
 
-        public int FilteringDuration { get => filteringDuration; set => SetProperty(ref filteringDuration, value); }
+        public int FilteringDuration
+        {
+            get => filteringDuration;
+            set
+            {
+                SetProperty(ref filteringDuration, value);
+                ReloadWorks();
+            }
+        }
 
         public bool Filtering
         {

@@ -67,7 +67,12 @@
                         Background="DarkGray"
                         IsChecked="{Binding Filtering}" />
 
-                    <TextBox Width="150" Text="{Binding FilteringStartDate, Converter={StaticResource DateConverter}}" />
+                    <TextBox Width="150" Text="{Binding FilteringStartDate, Converter={StaticResource DateConverter}}">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Up" Command="{Binding ForwardFilteringDateCommand}" />
+                            <KeyBinding Key="Down" Command="{Binding BackFilteringDateCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
 
                     <TextBlock
                         FontFamily="BIZ UDゴシック"
@@ -78,7 +83,12 @@
                     <TextBox
                         Width="40"
                         HorizontalContentAlignment="Center"
-                        Text="{Binding FilteringDuration}" />
+                        Text="{Binding FilteringDuration}">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Up" Command="{Binding DurationWidenCommand}" />
+                            <KeyBinding Key="Down" Command="{Binding DurationNarrowCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
 
                     <TextBlock
                         Padding="10,0"
