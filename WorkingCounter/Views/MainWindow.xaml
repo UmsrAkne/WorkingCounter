@@ -67,7 +67,11 @@
                         Background="DarkGray"
                         IsChecked="{Binding Filtering}" />
 
-                    <TextBox Width="150" Text="{Binding FilteringStartDate, Converter={StaticResource DateConverter}}">
+                    <TextBox
+                        Width="100"
+                        HorizontalContentAlignment="Center"
+                        Text="{Binding FilteringStartDate, Converter={StaticResource DateConverter}}">
+
                         <TextBox.InputBindings>
                             <KeyBinding Key="Up" Command="{Binding ForwardFilteringDateCommand}" />
                             <KeyBinding Key="Down" Command="{Binding BackFilteringDateCommand}" />
