@@ -67,40 +67,44 @@
                         Background="DarkGray"
                         IsChecked="{Binding Filtering}" />
 
-                    <TextBox
-                        Width="100"
-                        HorizontalContentAlignment="Center"
-                        Text="{Binding FilteringStartDate, Converter={StaticResource DateConverter}}">
+                    <StackPanel IsEnabled="{Binding Filtering}" Orientation="Horizontal">
 
-                        <TextBox.InputBindings>
-                            <KeyBinding Key="Up" Command="{Binding ForwardFilteringDateCommand}" />
-                            <KeyBinding Key="Down" Command="{Binding BackFilteringDateCommand}" />
-                        </TextBox.InputBindings>
-                    </TextBox>
+                        <TextBox
+                            Width="100"
+                            HorizontalContentAlignment="Center"
+                            Text="{Binding FilteringStartDate, Converter={StaticResource DateConverter}}">
 
-                    <TextBlock
-                        FontFamily="BIZ UDゴシック"
-                        FontSize="16"
-                        Foreground="WhiteSmoke"
-                        Text=" - " />
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Up" Command="{Binding ForwardFilteringDateCommand}" />
+                                <KeyBinding Key="Down" Command="{Binding BackFilteringDateCommand}" />
+                            </TextBox.InputBindings>
+                        </TextBox>
 
-                    <TextBox
-                        Width="40"
-                        HorizontalContentAlignment="Center"
-                        Text="{Binding FilteringDuration}">
-                        <TextBox.InputBindings>
-                            <KeyBinding Key="Up" Command="{Binding DurationWidenCommand}" />
-                            <KeyBinding Key="Down" Command="{Binding DurationNarrowCommand}" />
-                        </TextBox.InputBindings>
-                    </TextBox>
+                        <TextBlock
+                            FontFamily="BIZ UDゴシック"
+                            FontSize="16"
+                            Foreground="WhiteSmoke"
+                            Text=" - " />
 
-                    <TextBlock
-                        Padding="10,0"
-                        VerticalAlignment="Center"
-                        FontFamily="BIZ UDゴシック"
-                        FontSize="16"
-                        Foreground="WhiteSmoke"
-                        Text="日間" />
+                        <TextBox
+                            Width="40"
+                            HorizontalContentAlignment="Center"
+                            Text="{Binding FilteringDuration}">
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Up" Command="{Binding DurationWidenCommand}" />
+                                <KeyBinding Key="Down" Command="{Binding DurationNarrowCommand}" />
+                            </TextBox.InputBindings>
+                        </TextBox>
+
+                        <TextBlock
+                            Padding="10,0"
+                            VerticalAlignment="Center"
+                            FontFamily="BIZ UDゴシック"
+                            FontSize="16"
+                            Foreground="WhiteSmoke"
+                            Text="日間" />
+
+                    </StackPanel>
 
                 </StackPanel>
 
