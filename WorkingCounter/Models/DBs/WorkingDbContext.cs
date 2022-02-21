@@ -60,7 +60,7 @@
 
         public List<WorkingUnit> GetWorkingUnits(int parentWorkId)
         {
-            return WorkingUnits.Where(wu => wu.ParentWorkId == parentWorkId).OrderByDescending(wu => wu.AdditionDate).ToList();
+            return WorkingUnits.Where(wu => wu.ParentWorkId == parentWorkId).OrderBy(wu => wu.AdditionDate).ToList();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
