@@ -58,6 +58,7 @@
             Work = parameters.GetValue<Work>(nameof(Work));
             workingDbContext = parameters.GetValue<WorkingDbContext>(nameof(WorkingDbContext));
             Name = Work.Name;
+            Quota = Work.Quota;
             WorkingUnits = new ObservableCollection<WorkingUnit>(Work.Units.ToList());
         }
     }
