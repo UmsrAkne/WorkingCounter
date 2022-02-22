@@ -7,7 +7,7 @@
     xmlns:prism="http://prismlibrary.com/"
     Name="Window"
     Title="{Binding Title}"
-    Width="800"
+    Width="900"
     Height="350"
     prism:ViewModelLocator.AutoWireViewModel="True">
 
@@ -140,6 +140,7 @@
                         </Grid.Resources>
 
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90" />
                             <ColumnDefinition Width="250" />
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="340" />
@@ -147,11 +148,24 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <Border Grid.Column="0">
-                            <TextBlock Text="{Binding Name}" />
+                        <Border
+                            Margin="0,0,10,0"
+                            BorderBrush="Gray"
+                            BorderThickness="3,0,3,0"
+                            CornerRadius="3">
+
+                            <TextBlock
+                                Grid.Column="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="{Binding Status}" />
                         </Border>
 
                         <Border Grid.Column="1">
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                        </Border>
+
+                        <Border Grid.Column="2">
                             <Button
                                 Width="30"
                                 Command="{Binding DataContext.AddWorkingUnitCommand, ElementName=Window}"
@@ -187,7 +201,7 @@
                             </Button>
                         </Border>
 
-                        <Border Grid.Column="2">
+                        <Border Grid.Column="3">
                             <ListBox
                                 AlternationCount="5"
                                 Background="Transparent"
@@ -253,7 +267,7 @@
 
                         </Border>
 
-                        <Border Grid.Column="3" Padding="4,0">
+                        <Border Grid.Column="4" Padding="4,0">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Units.Count}" />
                                 <TextBlock Text=" / " />
@@ -262,7 +276,7 @@
                         </Border>
 
                         <TextBlock
-                            Grid.Column="4"
+                            Grid.Column="5"
                             HorizontalAlignment="Left"
                             Text="{Binding Unit}" />
 
