@@ -157,7 +157,8 @@
                             <TextBlock
                                 Grid.Column="0"
                                 HorizontalAlignment="Center"
-                                Text="status" />
+                                VerticalAlignment="Center"
+                                Text="{Binding Status}" />
                         </Border>
 
                         <Border Grid.Column="1">

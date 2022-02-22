@@ -37,5 +37,20 @@
 
         [NotMapped]
         public bool IsComplete => Units.Count >= Quota;
+
+        [NotMapped]
+        public string Status
+        {
+            get
+            {
+                if (IsComplete)
+                {
+                    return "完了";
+                }
+
+                return DateTime.Now > LimitDate ? "期限切れ" : "-";
+            }
+        }
+
     }
 }
