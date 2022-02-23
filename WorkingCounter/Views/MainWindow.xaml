@@ -114,14 +114,22 @@
 
                     <Border Width="1" Background="WhiteSmoke" />
 
-                    <CheckBox Margin="10,0" VerticalAlignment="Center" />
+                    <CheckBox
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        IsChecked="{Binding IsRestrictedDisplay}" />
 
                     <TextBlock
                         Margin="0,4"
                         VerticalAlignment="Center"
                         Text="取得数上限 : " />
 
-                    <TextBox Width="50" />
+                    <TextBox
+                        Width="50"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        IsEnabled="{Binding IsRestrictedDisplay}"
+                        Text="{Binding DisplayCountLimit}" />
 
                     <TextBlock
                         Margin="5"
