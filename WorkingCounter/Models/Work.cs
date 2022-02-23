@@ -51,6 +51,5 @@
                 return DateTime.Now > LimitDate ? "期限切れ" : "-";
             }
         }
-
     }
 }
