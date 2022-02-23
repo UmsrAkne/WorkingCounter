@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Windows.Controls;
     using System.Windows.Input;
     using Prism.Commands;
@@ -21,6 +22,8 @@
         private DateTime filteringStartDate = DateTime.Now;
         private int filteringDuration = 3;
         private bool filtering;
+        private int displayCountLimit = 200;
+        private bool isRestrictedDisplay = true;
 
         public MainWindowViewModel(IDialogService dialogService)
         {
@@ -132,11 +135,33 @@
             }
         }
 
+        public int DisplayCountLimit
+        {
+            get => displayCountLimit;
+            set
+            {
+                SetProperty(ref displayCountLimit, value);
+                ReloadWorks();
+            }
+        }
+
+        public bool IsRestrictedDisplay
+        {
+            get => isRestrictedDisplay;
+            set
+            {
+                SetProperty(ref isRestrictedDisplay, value);
+                ReloadWorks();
+            }
+        }
+
         private void ReloadWorks()
         {
             var workList = filtering
                 ? workingDbContext.GetWorks(FilteringStartDate.Date, new TimeSpan(FilteringDuration, 0, 0, 0))
                 : workingDbContext.GetWorks();
+
+            workList = IsRestrictedDisplay ? workList.Take(DisplayCountLimit).ToList() : workList;
 
             workList.ForEach(w =>
             {
