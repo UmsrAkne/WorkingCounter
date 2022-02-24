@@ -155,6 +155,13 @@
             }
         }
 
+        public DelegateCommand<ListBoxItem> DeleteWorkUnitCommand
+        {
+            get => new DelegateCommand<ListBoxItem>((ListBoxItem item) =>
+            {
+            });
+        }
+
         private void ReloadWorks()
         {
             var workList = filtering
