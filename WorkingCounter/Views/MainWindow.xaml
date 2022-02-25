@@ -267,7 +267,10 @@
                                                     <Setter Property="ContextMenu">
                                                         <Setter.Value>
                                                             <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
-                                                                <MenuItem Command="{Binding DeleteWorkUnitCommand}" Header="Unitを削除する" />
+
+                                                                <MenuItem Header="機能">
+                                                                    <MenuItem Command="{Binding DeleteWorkUnitCommand}" Header="Unitを削除する" />
+                                                                </MenuItem>
                                                             </ContextMenu>
                                                         </Setter.Value>
                                                     </Setter>
