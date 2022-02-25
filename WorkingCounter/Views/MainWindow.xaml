@@ -196,10 +196,7 @@
                         </Border>
 
                         <Border Grid.Column="2">
-                            <Button
-                                Width="30"
-                                Command="{Binding DataContext.AddWorkingUnitCommand, ElementName=Window}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}}">
+                            <Button Width="30" Command="{Binding DataContext.AddWorkingUnitCommand, ElementName=Window}">
 
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
@@ -237,7 +234,8 @@
                                 Background="Transparent"
                                 BorderThickness="0"
                                 ItemsSource="{Binding Units}"
-                                ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                SelectedItem="{Binding DataContext.SelectedUnit, ElementName=Window}">
 
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>

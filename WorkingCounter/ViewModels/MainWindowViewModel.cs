@@ -24,6 +24,7 @@
         private bool filtering;
         private int displayCountLimit = 200;
         private bool isRestrictedDisplay = true;
+        private WorkingUnit selectedUnit;
 
         public MainWindowViewModel(IDialogService dialogService)
         {
@@ -155,12 +156,19 @@
             }
         }
 
-        public DelegateCommand<ListBoxItem> DeleteWorkUnitCommand
+        public DelegateCommand DeleteWorkUnitCommand
         {
-            get => new DelegateCommand<ListBoxItem>((ListBoxItem item) =>
+            get => new DelegateCommand(() =>
             {
+                if (SelectedUnit != null)
+                {
+                    workingDbContext.Delete(SelectedUnit);
+                    ReloadWorks();
+                }
             });
         }
+
+        public WorkingUnit SelectedUnit { get => selectedUnit; set => SetProperty(ref selectedUnit, value); }
 
         private void ReloadWorks()
         {
