@@ -196,10 +196,7 @@
                         </Border>
 
                         <Border Grid.Column="2">
-                            <Button
-                                Width="30"
-                                Command="{Binding DataContext.AddWorkingUnitCommand, ElementName=Window}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}}">
+                            <Button Width="30" Command="{Binding DataContext.AddWorkingUnitCommand, ElementName=Window}">
 
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
@@ -237,7 +234,8 @@
                                 Background="Transparent"
                                 BorderThickness="0"
                                 ItemsSource="{Binding Units}"
-                                ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                SelectedItem="{Binding DataContext.SelectedUnit, ElementName=Window}">
 
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -265,6 +263,18 @@
 
                                             <Border.Style>
                                                 <Style TargetType="Border">
+                                                    <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext}" />
+                                                    <Setter Property="ContextMenu">
+                                                        <Setter.Value>
+                                                            <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+
+                                                                <MenuItem Header="機能">
+                                                                    <MenuItem Command="{Binding DeleteWorkUnitCommand}" Header="Unitを削除する" />
+                                                                </MenuItem>
+                                                            </ContextMenu>
+                                                        </Setter.Value>
+                                                    </Setter>
+
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Path=Content.IsComplete}" Value="True">
                                                             <Setter Property="Background" Value="Gray" />

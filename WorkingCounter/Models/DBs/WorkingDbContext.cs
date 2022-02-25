@@ -44,6 +44,12 @@
             SaveChanges();
         }
 
+        public void Delete(WorkingUnit workingUnit)
+        {
+            WorkingUnits.Remove(workingUnit);
+            SaveChanges();
+        }
+
         public List<Work> GetWorks()
         {
             return Works.Select(w => w).OrderByDescending(w => w.AdditionDate).ToList();
