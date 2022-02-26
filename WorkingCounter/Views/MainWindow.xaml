@@ -149,11 +149,14 @@
             Background="{StaticResource DarkGray}"
             ItemsSource="{Binding Works}">
 
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding ShowDetailWindowCommand}" CommandParameter="{Binding SelectedItem, ElementName=listView}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
+            <ListView.ContextMenu>
+                <ContextMenu x:Name="menu">
+                    <MenuItem
+                        Command="{Binding ShowDetailWindowCommand}"
+                        CommandParameter="{Binding SelectedItem, ElementName=listView}"
+                        Header="詳細" />
+                </ContextMenu>
+            </ListView.ContextMenu>
 
             <ListView.ItemTemplate>
                 <DataTemplate>

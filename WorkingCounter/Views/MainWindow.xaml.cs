@@ -10,6 +10,8 @@
         public MainWindow()
         {
             InitializeComponent();
+
+            NameScope.SetNameScope(menu, NameScope.GetNameScope(this));
         }
     }
 }
