@@ -17,7 +17,7 @@
         private readonly WorkingDbContext workingDbContext;
         private readonly IDialogService dialogService;
 
-        private string title = "Prism Application";
+        private string title = "Working counter";
         private ObservableCollection<Work> works;
         private DateTime filteringStartDate = DateTime.Now;
         private int filteringDuration = 3;
