@@ -24,8 +24,9 @@
         public string Name { get; set; } = string.Empty;
 
         /// <summary>
-        /// ノルマを表す 
+        /// ノルマを表す
         /// </summary>
+        /// <value>ノルマを表す数値</value>
         [Required]
         public int Quota { get; set; }
 

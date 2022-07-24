@@ -125,7 +125,7 @@
                     GroupName = TemplateName,
                     Name = w.Name,
                     Quota = w.Quota,
-                    Unit = w.Unit
+                    Unit = w.Unit,
                 });
             });
         });
@@ -141,7 +141,7 @@
                     LimitDate = DateTime.Today.AddDays(wt.DayCountToLimit),
                     StartDate = DateTime.Today.AddDays(wt.DayCountToStart),
                     Quota = wt.Quota,
-                    Unit = wt.Unit
+                    Unit = wt.Unit,
                 }).ToList());
         });
 
