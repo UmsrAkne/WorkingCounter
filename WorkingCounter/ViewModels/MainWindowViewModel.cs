@@ -4,7 +4,6 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Controls;
-    using System.Windows.Input;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Services.Dialogs;
@@ -43,7 +42,7 @@
                 var unit = new WorkingUnit
                 {
                     ParentWorkId = currentWork.Id,
-                    AdditionDate = System.DateTime.Now
+                    AdditionDate = DateTime.Now,
                 };
 
                 workingDbContext.Insert(unit);
@@ -55,11 +54,9 @@
         {
             if (w != null)
             {
-                var param = new DialogParameters
-                {
-                    { nameof(Work), w },
-                    { nameof(WorkingDbContext), workingDbContext }
-                };
+                var param = new DialogParameters();
+                param.Add(nameof(Work), w);
+                param.Add(nameof(WorkingDbContext), workingDbContext);
 
                 dialogService.ShowDialog(nameof(DetailWindow), param, (IDialogResult result) => { });
                 ReloadWorks();
@@ -68,10 +65,8 @@
 
         public DelegateCommand ShowAdditionWindowCommand => new DelegateCommand(() =>
         {
-            var param = new DialogParameters
-            {
-                { nameof(WorkingDbContext), workingDbContext }
-            };
+            var param = new DialogParameters();
+            param.Add(nameof(WorkingDbContext), workingDbContext);
 
             dialogService.ShowDialog(nameof(WorkAdditionWindow), param, (IDialogResult result) => { });
             ReloadWorks();
@@ -106,7 +101,7 @@
             get => filteringStartDate;
             set
             {
-                if (value == new DateTime())
+                if (value == default(DateTime))
                 {
                     value = filteringStartDate;
                 }

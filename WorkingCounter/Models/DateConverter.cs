@@ -14,7 +14,7 @@
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return DateTime.TryParse((string)value, out DateTime result) ? result : new DateTime();
+            return DateTime.TryParse((string)value, out DateTime result) ? result : default(DateTime);
         }
     }
 }
